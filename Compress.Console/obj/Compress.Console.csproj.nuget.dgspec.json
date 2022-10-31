@@ -1,0 +1,120 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/jonasvogel/RiderProjects/Compress/Compress.Console/Compress.Console.csproj": {}
+  },
+  "projects": {
+    "/Users/jonasvogel/RiderProjects/Compress/Compress.Console/Compress.Console.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/jonasvogel/RiderProjects/Compress/Compress.Console/Compress.Console.csproj",
+        "projectName": "Compress.Console",
+        "projectPath": "/Users/jonasvogel/RiderProjects/Compress/Compress.Console/Compress.Console.csproj",
+        "packagesPath": "/Users/jonasvogel/.nuget/packages/",
+        "outputPath": "/Users/jonasvogel/RiderProjects/Compress/Compress.Console/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/jonasvogel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/Compress.Lib.csproj": {
+                "projectPath": "/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/Compress.Lib.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/Compress.Lib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/Compress.Lib.csproj",
+        "projectName": "Compress.Lib",
+        "projectPath": "/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/Compress.Lib.csproj",
+        "packagesPath": "/Users/jonasvogel/.nuget/packages/",
+        "outputPath": "/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/jonasvogel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/bin/Debug/net6.0/Compress.Lib.deps.json
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/bin/Debug/net6.0/Compress.Lib.dll
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/bin/Debug/net6.0/Compress.Lib.pdb
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/Compress.Lib.csproj.AssemblyReference.cache
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/Compress.Lib.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/Compress.Lib.AssemblyInfoInputs.cache
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/Compress.Lib.AssemblyInfo.cs
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/Compress.Lib.csproj.CoreCompileInputs.cache
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/Compress.Lib.dll
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/refint/Compress.Lib.dll
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/Compress.Lib.pdb
+/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/ref/Compress.Lib.dll

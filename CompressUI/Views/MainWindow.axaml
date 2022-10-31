@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CompressUI.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="CompressUI.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="CompressUI">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="1">
+            <TextBlock DockPanel.Dock="Top" Text="Drag and drop files here" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        </DockPanel>
+        <Border Grid.Row="0" Grid.RowSpan="3" Name="Border" Background="#FF1E1E1E" Opacity="1" IsVisible="False">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Loading..." FontSize="20" FontWeight="Bold"/>
+                <ProgressBar Name="ProgressBar" Width="300" Height="30" IsIndeterminate="True"/>
+            </StackPanel>
+        </Border>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="Compress" Click="Button_Compress"/>
+            <Button Content="Decompress" IsEnabled="False" Command="{Binding DecompressCommand}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="0" Grid.RowSpan="3" >
+        <TextBox Text="Path to file"  Margin="0 0 0 0" Width="300" Height="30" />
+        </StackPanel>
+
+    </Grid>
+    
+</Window>
