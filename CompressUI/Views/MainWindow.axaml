@@ -18,11 +18,8 @@
             <RowDefinition Height="400"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <DockPanel Grid.Row="1">
-            <TextBlock DockPanel.Dock="Top" Text="Drag and drop files here" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-        </DockPanel>
-        <Border Grid.Row="0" Grid.RowSpan="3" Name="Border" Background="#FF1E1E1E" Opacity="1" IsVisible="False">
+        
+        <Border Grid.Row="0" Grid.RowSpan="3" Name="Border" Background="#FF1E1E1E" Opacity="1" IsVisible="false">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="Loading..." FontSize="20" FontWeight="Bold"/>
                 <ProgressBar Name="ProgressBar" Width="300" Height="30" IsIndeterminate="True"/>
@@ -31,13 +28,16 @@
         
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Button Content="Compress" Click="Button_Compress"/>
-            <Button Content="Decompress" IsEnabled="False" Command="{Binding DecompressCommand}"/>
+            <Button Content="Decompress" Click="Button_Decompress"/>
         </StackPanel>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="0" Grid.RowSpan="3" >
-        <TextBox Text="Path to file"  Margin="0 0 0 0" Width="300" Height="30" />
+        <TextBox Text="Path to file"  Margin="0 0 0 0" Width="700" Height="30" />
         </StackPanel>
-
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="0" Grid.RowSpan="3" >
+            <TextBox Text="" Name="Box" Margin="0 40 0 0" Width="700" Height="370" IsEnabled="True" Watermark="FileText comes here" UseFloatingWatermark="True" IsReadOnly="True"/>
+        </StackPanel>
     </Grid>
     
 </Window>

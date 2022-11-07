@@ -7,7 +7,7 @@ public class Encode
 {
 
     //huffman encoding algorithm
-    public static void EncodeString(byte[] input, string path)
+    public static void EncodeString(string input, string path, string savepath)
     {
         //get the frequency of each character
         Dictionary<char, int> freq = new Dictionary<char, int>();
@@ -31,7 +31,7 @@ public class Encode
         {
             sb.Append(codeTable[c]);
         }
-        SaveFile(sb.ToString());
+        SaveFile(sb.ToString(), savepath);
     }
     
     private static Node BuildTree(Dictionary<char, int> freq)
@@ -87,8 +87,9 @@ public class Encode
         StringBuilder sb = new StringBuilder();
         foreach (KeyValuePair<char, string> kvp in codeTable)
         {
-            sb.Append(kvp.Key + "\n");
+            sb.Append(kvp.Key);
             sb.Append(kvp.Value + "\n");
+            
         }
         byte[] codeTableBytes = Encoding.ASCII.GetBytes(sb.ToString());
         //write the code table to a file
@@ -99,77 +100,76 @@ public class Encode
     {
         try
         {
+            List<string> str = new List<string>();
+            List<byte> bytes = new List<byte>();
 
-            //Create byteArray with the length of the chars of the parameter code and divided by 8 because 8 bits are 1 byte
-            byte[] byteArray = new byte[code.ToCharArray().Length / 8];
-            byte currentByte = 0, count = 0, actuallyCount = 0;
-
-            //To effectively save data we add as many bits as possible into a byte 
-            //Iterate through every character from the code variable
-            code.ToCharArray().ToList().ForEach(character =>
+            for (int i = 0; i < code.Length - code.Length % 8 ; i += 8)
             {
-                //If the character is 1, the variable currentBytes binary is set to 1
-                if (character == '1') currentByte |= 1; //example 0000 0001;
-                //1 byte are 8 bits because of this we count until we reach 7 
-                if (count < 8)
-                {
-                    currentByte <<= 1; //Shifts the binary code of the currentByte to the left by 1 example 0000 0010;
-                    count++;
-                }
-                //If count has reached 7 we created a full byte now we can add this byte to the byteArray
-                else
-                {
-                    count = 0; //Reset variable count for the next byte
-                    byteArray[actuallyCount] = currentByte; //Adds the currentByte to the byteArray
-                    currentByte = 0; //Reset variable currentByte for the next bit shifts
-                    actuallyCount++;
-                }
-            });
+                str.Add(code.Substring(i, 8));
+            }
+            if (code.Length % 8 != 0)
+            {
+                str.Add(code.Substring(code.Length - code.Length % 8));
+            }
+            foreach (string s in str)
+            {
+                bytes.Add(Convert.ToByte(s, 2));
+            }
+            File.WriteAllBytes(savingPath, bytes.ToArray());
 
-            File.WriteAllBytes(savingPath, byteArray);
         }
         catch (DirectoryNotFoundException ex) { throw new DirectoryNotFoundException("Dictionary not found", ex); }
     }
     
     //load the code table from a file
-    public static Dictionary<char, string> LoadCodeTable(string path)
+    public static Dictionary<string, string> LoadCodeTable(string path)
     {
-        Dictionary<char, string> codeTable = new Dictionary<char, string>();
-        byte[] codeTableBytes = File.ReadAllBytes(path);
-        string codeTableString = Encoding.ASCII.GetString(codeTableBytes);
-        string[] codeTableArray = codeTableString.Split("\n");
-        for (int i = 0; i < codeTableArray.Length; i++)
+        Dictionary<string, string> codeTable = new Dictionary<string, string>();
+        var file = File.ReadAllLines(path);
+        for (int i = 0; i < file.Length; i++)
         {
-            codeTable.Add(codeTableArray[i][0], codeTableArray[i + 1]);
-            i++;
+            if (file[i] == "")
+            {
+                codeTable.Add("\n", file[i + 1]);
+                i++;
+            }
+            else
+            {
+                codeTable.Add(file[i].Substring(0, 1), file[i].Substring(1));  
+            }
+
         }
         return codeTable;
     }
     
-    //decode the input
-    public static string DecodeString(string path1 , string path2)
+    //use code table to decode the string from a file
+    public static string DecodeString(string path, string filepath)
     {
-        Dictionary<char, string> codeTable = LoadCodeTable(path2);
-        var input = File.ReadAllBytes(path1);
+        Dictionary<string, string> codeTable = LoadCodeTable(path);
+        byte[] fileBytes = File.ReadAllBytes(filepath);
+        
         StringBuilder sb = new StringBuilder();
-        foreach (byte b in input)
+        //filebytes to string
+        foreach (byte b in fileBytes)
         {
-            sb.Append(b);
+            sb.Append(Convert.ToString(b, 2).PadLeft(8, '0'));
         }
-        string inputString = sb.ToString();
-        StringBuilder output = new StringBuilder();
+        
+        string fileString = sb.ToString();
+
         string code = "";
-        foreach (char c in inputString)
+        sb.Clear();
+        
+        foreach (char c in fileString)
         {
             code += c;
             if (codeTable.ContainsValue(code))
-            {
-                output.Append(codeTable.FirstOrDefault(x => x.Value == code).Key);
+            {   
+                sb.Append(codeTable.FirstOrDefault(x => x.Value == code).Key);
                 code = "";
             }
         }
-        //return Encoding.ASCII.GetBytes(output.ToString());
-        return output.ToString();
+        return sb.ToString();
     }
 
 }

@@ -2,9 +2,11 @@
 using Compress;
 
 Encode ec = new Encode();
-var x = File.ReadAllText("kühl copy.rtf");
-byte[] input = Encoding.ASCII.GetBytes(x);
-Encode.EncodeString(input, "tree");
+var input = File.ReadAllText("kühl copy.rtf");
+
+Encode.EncodeString(input, "tree","tree");
+var y = Encode.DecodeString("tree", "huff");
+Console.WriteLine(y);
 
 
 
