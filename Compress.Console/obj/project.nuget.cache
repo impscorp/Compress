@@ -1,8 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "B/3C/jUxQGDWdTHThSXmpQJ+zAx/ZnPhUrLWgQCC66HAno/4y3tUmG11HATF5m2biimN8Yljlq9MYdgZGJdJQQ==",
+  "dgSpecHash": "4jzsOMqPNbqQp2gEadTM2/Whj4jg11m3kUqPIV3gNy9CNLeoLRRpXTM+oQO5HwwuoVBGUQvgxKL88mqr4Wkikw==",
   "success": true,
   "projectFilePath": "/Users/jonasvogel/RiderProjects/Compress/Compress.Console/Compress.Console.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/jonasvogel/.nuget/packages/avalonia/0.10.18/avalonia.0.10.18.nupkg.sha512",
+    "/Users/jonasvogel/.nuget/packages/avalonia.remote.protocol/0.10.18/avalonia.remote.protocol.0.10.18.nupkg.sha512",
+    "/Users/jonasvogel/.nuget/packages/jetbrains.annotations/10.3.0/jetbrains.annotations.10.3.0.nupkg.sha512",
+    "/Users/jonasvogel/.nuget/packages/microsoft.netcore.platforms/1.0.1/microsoft.netcore.platforms.1.0.1.nupkg.sha512",
+    "/Users/jonasvogel/.nuget/packages/microsoft.netcore.targets/1.0.1/microsoft.netcore.targets.1.0.1.nupkg.sha512",
+    "/Users/jonasvogel/.nuget/packages/system.componentmodel.annotations/4.5.0/system.componentmodel.annotations.4.5.0.nupkg.sha512",
+    "/Users/jonasvogel/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/Users/jonasvogel/.nuget/packages/system.reactive/5.0.0/system.reactive.5.0.0.nupkg.sha512",
+    "/Users/jonasvogel/.nuget/packages/system.runtime/4.1.0/system.runtime.4.1.0.nupkg.sha512",
+    "/Users/jonasvogel/.nuget/packages/system.runtime.compilerservices.unsafe/4.6.0/system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
+    "/Users/jonasvogel/.nuget/packages/system.valuetuple/4.5.0/system.valuetuple.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

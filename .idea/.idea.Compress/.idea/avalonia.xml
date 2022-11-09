@@ -6,6 +6,7 @@
         <entry key="CompressUI/App.axaml" value="CompressUI/CompressUI.csproj" />
         <entry key="CompressUI/CompressUI/Views/MainView.axaml" value="CompressUI/CompressUI.Desktop/CompressUI.Desktop.csproj" />
         <entry key="CompressUI/CompressUI/Views/MainWindow.axaml" value="CompressUI/CompressUI.Desktop/CompressUI.Desktop.csproj" />
+        <entry key="CompressUI/Icons.axaml" value="CompressUI/CompressUI.csproj" />
         <entry key="CompressUI/Views/MainWindow.axaml" value="CompressUI/CompressUI.csproj" />
       </map>
     </option>

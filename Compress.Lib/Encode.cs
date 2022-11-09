@@ -1,15 +1,24 @@
 using System.Collections;
+using System.Runtime.InteropServices;
 using System.Text;
+using Avalonia.Controls;
 
 namespace Compress;
 
 public class Encode
 {
-
+    public string codeTablepath { get; set; }
+    public string Loadpath{ get; set; }
+    public Encode()
+    {
+    }
     //huffman encoding algorithm
-    public static void EncodeString(string input, string path, string savepath)
+    public void EncodeString(string loadpath, string treepath, string savepath)
     {
         //get the frequency of each character
+        Loadpath = loadpath;
+        var input = File.ReadAllText(Loadpath!);
+        input = input.Replace("\r", "");
         Dictionary<char, int> freq = new Dictionary<char, int>();
         foreach (char c in input)
         {
@@ -24,7 +33,7 @@ public class Encode
         //build the code table
         Dictionary<char, string> codeTable = new Dictionary<char, string>();
         BuildCodeTable(root, codeTable, "");
-        SaveCodeTable(codeTable, path);
+        SaveCodeTable(codeTable, treepath);
         //encode the input
         StringBuilder sb = new StringBuilder();
         foreach (char c in input)
@@ -81,7 +90,7 @@ public class Encode
     }
     
     //Save the code table and the string to a byte file
-    public static void SaveCodeTable(Dictionary<char, string> codeTable, string path)
+    public void SaveCodeTable(Dictionary<char, string> codeTable, string path)
     {
         //binary codeTable
         StringBuilder sb = new StringBuilder();
@@ -89,14 +98,25 @@ public class Encode
         {
             sb.Append(kvp.Key);
             sb.Append(kvp.Value + "\n");
-            
         }
-        byte[] codeTableBytes = Encoding.ASCII.GetBytes(sb.ToString());
         //write the code table to a file
-        File.WriteAllBytes(path, codeTableBytes);
+        //system temp folder
+        string tempPath = Path.GetTempPath();
+        //macos get access to the temp folder
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            tempPath = "/private" + tempPath;
+        }
+
+        string filename = Path.GetFileNameWithoutExtension(Loadpath);
+        string codeTablePath = tempPath + filename + "_codeTable.tree";
+        codeTablepath = codeTablePath;
+        File.WriteAllText(codeTablePath, sb.ToString());
+        
+        //File.WriteAllBytes(tempPath, codeTableBytes);
     }
     
-    public static void SaveFile(string code, string savingPath = "huff")
+    public void SaveFile(string code, string savingPath = "huff")
     {
         try
         {
@@ -116,7 +136,6 @@ public class Encode
                 bytes.Add(Convert.ToByte(s, 2));
             }
             File.WriteAllBytes(savingPath, bytes.ToArray());
-
         }
         catch (DirectoryNotFoundException ex) { throw new DirectoryNotFoundException("Dictionary not found", ex); }
     }
@@ -137,17 +156,15 @@ public class Encode
             {
                 codeTable.Add(file[i].Substring(0, 1), file[i].Substring(1));  
             }
-
         }
         return codeTable;
     }
     
     //use code table to decode the string from a file
-    public static string DecodeString(string path, string filepath)
+    public static string DecodeString(string treepath, string filepath)
     {
-        Dictionary<string, string> codeTable = LoadCodeTable(path);
+        Dictionary<string, string> codeTable = LoadCodeTable(treepath);
         byte[] fileBytes = File.ReadAllBytes(filepath);
-        
         StringBuilder sb = new StringBuilder();
         //filebytes to string
         foreach (byte b in fileBytes)
@@ -171,5 +188,4 @@ public class Encode
         }
         return sb.ToString();
     }
-
 }
