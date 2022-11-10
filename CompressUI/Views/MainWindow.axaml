@@ -47,7 +47,7 @@
         <TextBox Text="" Watermark="File to work with" Name="path" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" IsReadOnly="True" Margin="50 40 " Width="580" Height="30" />
 
         <Panel Margin="40">
-            <Button Grid.Column="0" Grid.Row="1" Margin="50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding Searchfolder}" Click="Button_Compress">
+            <Button Grid.Column="0" Grid.Row="1" Margin="50 0" HorizontalAlignment="Right" VerticalAlignment="Top"  Click="Button_Compress">
                 <PathIcon Data="{DynamicResource JamIcons.FolderZip}"/>
                 <ToolTip.Tip>
                     <TextBlock Text="Compress given file"/>

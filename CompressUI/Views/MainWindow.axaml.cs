@@ -103,14 +103,16 @@ namespace CompressUI.Views
         async Task<string> DecompressTask()
         {
             //Treepath = Encode.codeTablepath;
-            string tempPath = Path.GetTempPath();
-            //macos get access to the temp folder
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                tempPath = "/private" + tempPath;
-            }
+            // string tempPath = Path.GetTempPath();
+            // //macos get access to the temp folder
+            // if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            // {
+            //     tempPath = "/private" + tempPath;
+            // }
+            string exePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
             string filename = Path.GetFileNameWithoutExtension(this.FindControl<TextBox>("path").Text);
-            Treepath = tempPath + filename + "_codeTable.tree";
+            Treepath = exePath + filename + "_codeTable.tree";
             var y = Encode.DecodeString(Treepath, Loadpath);
             Savepath = await SaveFile();
             if (Savepath != null)
@@ -121,7 +123,8 @@ namespace CompressUI.Views
                     Savepath = Path.ChangeExtension(Savepath, ".txt");
                 }
                 File.WriteAllText(Savepath, y);
-                this.FindControl<TextBox>("Box").Text = y;
+                var x = Encode.CompareFiles(Savepath, Loadpath);
+                this.FindControl<TextBox>("Box").Text = "Compression rate: " + Math.Round(x, 2) + "%" + "\n\n" + "Decoded String: \n" + y;
             }
             return "Decompress";
         }
@@ -144,7 +147,6 @@ namespace CompressUI.Views
             throw new IndexOutOfRangeException("Canceled");
             
         }
-
         public async Task<string> SaveFile()
         {
             SaveFileDialog dialog = new SaveFileDialog();

@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -118,14 +122,16 @@ public class Encode
             sb.Append(kvp.Value + "\n");
         }
         //write the code table to a file
-        string tempPath = Path.GetTempPath();
-        //macos get access to the temp folder
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            tempPath = "/private" + tempPath;
-        }
+        // string tempPath = Path.GetTempPath();
+        // //macos get access to the temp folder
+        // if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        // {
+        //     tempPath = "/private" + tempPath;
+        // }
+        //get execution path
+        string exePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         string filename = Path.GetFileNameWithoutExtension(Loadpath);
-        string codeTablePath = tempPath + filename + "_codeTable.tree";
+        string codeTablePath = exePath + filename + "_codeTable.tree";
         codeTablepath = codeTablePath;
         File.WriteAllText(codeTablePath, sb.ToString());
     }
@@ -217,4 +223,18 @@ public class Encode
         }
         return sb.ToString();
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="originalPath"></param>
+    /// <param name="decodedPath"></param>
+    /// <returns></returns>
+    public static double CompareFiles(string originalPath, string decodedPath)
+    {
+        FileInfo original = new FileInfo(originalPath);
+        FileInfo decoded = new FileInfo(decodedPath);
+        double difference = (original.Length - decoded.Length) / (double)original.Length * 100;
+        return difference;
+    }
+    
 }

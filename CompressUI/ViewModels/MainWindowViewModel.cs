@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Input;
+using Avalonia;
 using Avalonia.Controls;
 using Compress;
 using CompressUI.Views;
@@ -15,12 +16,10 @@ namespace CompressUI.ViewModels
             
             Searchfolder = ReactiveCommand.Create(() =>
             {
-
             });
         }
-
         public ICommand Searchfolder { get; }
-        
+
     }
     
 }
