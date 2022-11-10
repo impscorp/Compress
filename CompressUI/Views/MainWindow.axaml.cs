@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using Compress;
+using ApplicationException = System.ApplicationException;
 
 namespace CompressUI.Views
 {
@@ -33,7 +35,12 @@ namespace CompressUI.Views
         {
             AvaloniaXamlLoader.Load(this);
         }
-
+        
+        /// <summary>
+        /// the button event to compress the file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Button_Compress(object? sender, RoutedEventArgs e)
         {
             Loading.IsVisible = true;
@@ -41,22 +48,43 @@ namespace CompressUI.Views
             Loading.IsVisible = false;
         }
         
+        /// <summary>
+        /// the button event for decompressing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Button_Decompress(object? sender, RoutedEventArgs e)
         {
             Loading.IsVisible = true;
             await Dispatcher.UIThread.InvokeAsync(DecompressTask, DispatcherPriority.Input);
             Loading.IsVisible = false;
         }
+        /// <summary>
+        /// gets the file path and puts it into the loadpath variable
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="routedEventArgs"></param>
         private async void Button_LoadFile(object? sender, RoutedEventArgs routedEventArgs)
         {
-            this.FindControl<TextBox>("Box").Text = "";
-            Loadpath = await OpenFolder();
-            if (Loadpath != null)
+            try
             {
-                this.FindControl<TextBox>("path").Text = Loadpath;
+                this.FindControl<TextBox>("Box").Text = "";
+                Loadpath = await OpenFolder();
+                if (Loadpath != null)
+                {
+                    this.FindControl<TextBox>("path").Text = Loadpath;
+                }
             }
+            catch (ApplicationException)
+            {
+                this.FindControl<TextBox>("path").Text = "canceled";
+            }
+
         }
-        
+        /// <summary>
+        /// the task to compress the file
+        /// </summary>
+        /// <returns></returns>
         async Task<string> CompressTask()
         {
             Savepath = await SaveFile();
@@ -68,6 +96,10 @@ namespace CompressUI.Views
             Loadpath = Savepath;
             return "Compress";
         }
+        /// <summary>
+        /// the task to decompress the file
+        /// </summary>
+        /// <returns></returns>
         async Task<string> DecompressTask()
         {
             //Treepath = Encode.codeTablepath;
@@ -93,14 +125,24 @@ namespace CompressUI.Views
             }
             return "Decompress";
         }
+        /// <summary>
+        /// task to open a openfiledialog
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         public async Task<string> OpenFolder()
         {
+            
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Open File";
-            dialog.Filters.Add(new FileDialogFilter { Name = "Text", Extensions = { "txt" , "rtf", "huff" } });
-            dialog.Filters.Add(new FileDialogFilter { Name = "All", Extensions = { "*" } });
+            dialog.Filters?.Add(new FileDialogFilter { Name = "Text", Extensions = { "txt" , "rtf", "huff" } });
             var result = await dialog.ShowAsync(Window);
-            return result[0];
+            if (result != null)
+            {
+                return result[0];
+            }
+            throw new IndexOutOfRangeException("Canceled");
+            
         }
 
         public async Task<string> SaveFile()

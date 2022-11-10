@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Runtime.InteropServices;
 using System.Text;
-using Avalonia.Controls;
+
 
 namespace Compress;
 
@@ -12,7 +11,13 @@ public class Encode
     public Encode()
     {
     }
-    //huffman encoding algorithm
+   
+    /// <summary>
+    /// The function to encode the input file into a huffman encoded string
+    /// </summary>
+    /// <param name="loadpath">The path to the input file</param>
+    /// <param name="treepath">The path were the tree is being saved to</param>
+    /// <param name="savepath">The path were the encoded file will be saved to</param>
     public void EncodeString(string loadpath, string treepath, string savepath)
     {
         //get the frequency of each character
@@ -33,16 +38,22 @@ public class Encode
         //build the code table
         Dictionary<char, string> codeTable = new Dictionary<char, string>();
         BuildCodeTable(root, codeTable, "");
-        SaveCodeTable(codeTable, treepath);
+        SaveCodeTable(codeTable);
         //encode the input
         StringBuilder sb = new StringBuilder();
         foreach (char c in input)
         {
             sb.Append(codeTable[c]);
         }
+        
         SaveFile(sb.ToString(), savepath);
     }
-    
+   
+    /// <summary>
+    /// The function to build the huffman tree
+    /// </summary>
+    /// <param name="freq">the Freq Dictionary from the input file</param>
+    /// <returns></returns>
     private static Node BuildTree(Dictionary<char, int> freq)
     {
         //create a leaf node for each character
@@ -51,7 +62,6 @@ public class Encode
         {
             nodes.Add(new Node(kvp.Key, kvp.Value));
         }
-
         //build the tree
         while (nodes.Count > 1)
         {
@@ -75,7 +85,12 @@ public class Encode
         return nodes.FirstOrDefault();
     }
     
-    //build the code table
+    /// <summary>
+    /// Build the code table from the tree
+    /// </summary>
+    /// <param name="node">The tree</param>
+    /// <param name="codeTable">empty Dictionary from encode method</param>
+    /// <param name="code">adds 0 or 1</param>
     public static void BuildCodeTable(Node node, Dictionary<char, string> codeTable, string code)
     {
         if (node.IsLeaf)
@@ -89,8 +104,11 @@ public class Encode
         } 
     }
     
-    //Save the code table and the string to a byte file
-    public void SaveCodeTable(Dictionary<char, string> codeTable, string path)
+    /// <summary>
+    /// save the code table to a file in a temp folder
+    /// </summary>
+    /// <param name="codeTable">the code table to save</param>
+    public void SaveCodeTable(Dictionary<char, string> codeTable)
     {
         //binary codeTable
         StringBuilder sb = new StringBuilder();
@@ -100,23 +118,25 @@ public class Encode
             sb.Append(kvp.Value + "\n");
         }
         //write the code table to a file
-        //system temp folder
         string tempPath = Path.GetTempPath();
         //macos get access to the temp folder
         if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
             tempPath = "/private" + tempPath;
         }
-
         string filename = Path.GetFileNameWithoutExtension(Loadpath);
         string codeTablePath = tempPath + filename + "_codeTable.tree";
         codeTablepath = codeTablePath;
         File.WriteAllText(codeTablePath, sb.ToString());
-        
-        //File.WriteAllBytes(tempPath, codeTableBytes);
     }
     
-    public void SaveFile(string code, string savingPath = "huff")
+    /// <summary>
+    /// saves the encoded string to a file
+    /// </summary>
+    /// <param name="code">The encoded string</param>
+    /// <param name="savingPath"></param>
+    /// <exception cref="DirectoryNotFoundException"></exception>
+    public void SaveFile(string code, string savingPath)
     {
         try
         {
@@ -140,7 +160,11 @@ public class Encode
         catch (DirectoryNotFoundException ex) { throw new DirectoryNotFoundException("Dictionary not found", ex); }
     }
     
-    //load the code table from a file
+    /// <summary>
+    /// load the code table from a file
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns>the codetable that is needed to decode the file</returns>
     public static Dictionary<string, string> LoadCodeTable(string path)
     {
         Dictionary<string, string> codeTable = new Dictionary<string, string>();
@@ -160,7 +184,12 @@ public class Encode
         return codeTable;
     }
     
-    //use code table to decode the string from a file
+    /// <summary>
+    /// decode the file
+    /// </summary>
+    /// <param name="treepath">the path to the tree</param>
+    /// <param name="filepath">the path to the file</param>
+    /// <returns>the decoded string</returns>
     public static string DecodeString(string treepath, string filepath)
     {
         Dictionary<string, string> codeTable = LoadCodeTable(treepath);
