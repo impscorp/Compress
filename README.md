@@ -1,6 +1,6 @@
 # What is Compress?
 Compress is a simple tool to compress txt and rtf files. </br>
-The Ui was built with the Avalonia Framework and is Crossplatform
+The Ui was built with the Avalonia Framework. So the programm is Crossplatform
 # How to use Compress?
 i demonstrated how to use the programm in the following video
 #
