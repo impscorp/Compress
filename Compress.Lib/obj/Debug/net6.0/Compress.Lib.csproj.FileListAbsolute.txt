@@ -10,3 +10,15 @@
 /Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/refint/Compress.Lib.dll
 /Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/Compress.Lib.pdb
 /Users/jonasvogel/RiderProjects/Compress/Compress.Lib/obj/Debug/net6.0/ref/Compress.Lib.dll
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\bin\Debug\net6.0\Compress.Lib.deps.json
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\bin\Debug\net6.0\Compress.Lib.dll
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\bin\Debug\net6.0\Compress.Lib.pdb
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\obj\Debug\net6.0\Compress.Lib.csproj.AssemblyReference.cache
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\obj\Debug\net6.0\Compress.Lib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\obj\Debug\net6.0\Compress.Lib.AssemblyInfoInputs.cache
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\obj\Debug\net6.0\Compress.Lib.AssemblyInfo.cs
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\obj\Debug\net6.0\Compress.Lib.csproj.CoreCompileInputs.cache
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\obj\Debug\net6.0\Compress.Lib.dll
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\obj\Debug\net6.0\refint\Compress.Lib.dll
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\obj\Debug\net6.0\Compress.Lib.pdb
+C:\Users\jonas\RiderProjects\Compress\Compress.Lib\obj\Debug\net6.0\ref\Compress.Lib.dll

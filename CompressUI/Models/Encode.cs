@@ -27,6 +27,10 @@ public class Encode
         //get the frequency of each character
         Loadpath = loadpath;
         var input = File.ReadAllText(Loadpath!);
+        if (input.Length == 0)
+        {
+            return;
+        }
         input = input.Replace("\r", "");
         Dictionary<char, int> freq = new Dictionary<char, int>();
         foreach (char c in input)

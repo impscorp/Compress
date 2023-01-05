@@ -1,20 +1,23 @@
 {
   "version": 2,
-  "dgSpecHash": "JdIW9aImgLySvtYT5DKvl9y5Z8k3wLXqNUzsetA+cwRY9IWJZWRJVvuIyG2Ypm0whGTGgZFEz6R1O/SXDT1VFw==",
+  "dgSpecHash": "hqHzflRe0vSlAXXOAwWgYV7pqEA1SI/YL6amYX3BMMSgVs1qNklgE0mcjm7deq7YAQOEKR5IqIPnwgFApiNVJw==",
   "success": true,
-  "projectFilePath": "/Users/jonasvogel/RiderProjects/Compress/Compress.Lib/Compress.Lib.csproj",
+  "projectFilePath": "C:\\Users\\jonas\\RiderProjects\\Compress\\Compress.Lib\\Compress.Lib.csproj",
   "expectedPackageFiles": [
-    "/Users/jonasvogel/.nuget/packages/avalonia/0.10.18/avalonia.0.10.18.nupkg.sha512",
-    "/Users/jonasvogel/.nuget/packages/avalonia.remote.protocol/0.10.18/avalonia.remote.protocol.0.10.18.nupkg.sha512",
-    "/Users/jonasvogel/.nuget/packages/jetbrains.annotations/10.3.0/jetbrains.annotations.10.3.0.nupkg.sha512",
-    "/Users/jonasvogel/.nuget/packages/microsoft.netcore.platforms/1.0.1/microsoft.netcore.platforms.1.0.1.nupkg.sha512",
-    "/Users/jonasvogel/.nuget/packages/microsoft.netcore.targets/1.0.1/microsoft.netcore.targets.1.0.1.nupkg.sha512",
-    "/Users/jonasvogel/.nuget/packages/system.componentmodel.annotations/4.5.0/system.componentmodel.annotations.4.5.0.nupkg.sha512",
-    "/Users/jonasvogel/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
-    "/Users/jonasvogel/.nuget/packages/system.reactive/5.0.0/system.reactive.5.0.0.nupkg.sha512",
-    "/Users/jonasvogel/.nuget/packages/system.runtime/4.1.0/system.runtime.4.1.0.nupkg.sha512",
-    "/Users/jonasvogel/.nuget/packages/system.runtime.compilerservices.unsafe/4.6.0/system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
-    "/Users/jonasvogel/.nuget/packages/system.valuetuple/4.5.0/system.valuetuple.4.5.0.nupkg.sha512"
+    "C:\\Users\\jonas\\.nuget\\packages\\avalonia\\0.10.18\\avalonia.0.10.18.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\avalonia.remote.protocol\\0.10.18\\avalonia.remote.protocol.0.10.18.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\jetbrains.annotations\\10.3.0\\jetbrains.annotations.10.3.0.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\system.componentmodel.annotations\\4.5.0\\system.componentmodel.annotations.4.5.0.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\system.reactive\\5.0.0\\system.reactive.5.0.0.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\system.runtime\\4.1.0\\system.runtime.4.1.0.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.12\\microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.12\\microsoft.windowsdesktop.app.ref.6.0.12.nupkg.sha512",
+    "C:\\Users\\jonas\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.12\\microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512"
   ],
   "logs": []
 }

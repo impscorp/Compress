@@ -1,10 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Windows.Input;
-using Avalonia;
-using Avalonia.Controls;
-using Compress;
-using CompressUI.Views;
+﻿using System.Windows.Input;
 using ReactiveUI;
 
 namespace CompressUI.ViewModels

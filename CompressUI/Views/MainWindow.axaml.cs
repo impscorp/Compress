@@ -1,9 +1,7 @@
 using System;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Avalonia.Controls;
-using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
@@ -91,6 +89,16 @@ namespace CompressUI.Views
             if (Savepath != null)
             {
                 Encode.EncodeString(Loadpath!, Treepath, Savepath); 
+                //check if encode is successful
+                if (File.Exists(Savepath))
+                {
+                    this.FindControl<TextBox>("Box").Text = "Compressed\r" + Math.Round(Encode.CompareFiles(Loadpath, Savepath)) + "%";
+                }
+                else
+                {
+                    this.FindControl<TextBox>("Box").Text = "Failed, check if file is empty";
+                }
+  
             }
             this.FindControl<TextBox>("path").Text = Savepath;
             Loadpath = Savepath;
@@ -153,6 +161,7 @@ namespace CompressUI.Views
             dialog.Title = "Save File";
             dialog.InitialFileName = Path.GetFileName(this.FindControl<TextBox>("path").Text);
             dialog.Filters.Add(new FileDialogFilter { Name = "Text", Extensions = { "huff", "txt"} });
+            dialog.DefaultExtension = "huff";
             var result = await dialog.ShowAsync(Window);
             return result;
         }

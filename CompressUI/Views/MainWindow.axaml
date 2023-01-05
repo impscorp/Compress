@@ -43,7 +43,7 @@
         <StackPanel Grid.Row="0" Grid.Column="1"  Grid.RowSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" >
             <TextBox Text="" Watermark="Decompressed Text" Name="Box" Margin="0 80 0 0" Width="700" Height="320" IsEnabled="True" IsReadOnly="True"/>
         </StackPanel>
-        
+
         <TextBox Text="" Watermark="File to work with" Name="path" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" IsReadOnly="True" Margin="50 40 " Width="580" Height="30" />
 
         <Panel Margin="40">
